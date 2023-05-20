@@ -1,45 +1,48 @@
 {
   "name": "anify",
-  "version": "0.1.0",
+  "version": "1.2.0",
+  "main": "dist-electron/main/index.js",
+  "description": "",
+  "author": "Caleb",
+  "license": "MIT",
   "private": true,
-  "dependencies": {
-    "@craco/craco": "^7.1.0",
-    "@testing-library/jest-dom": "^5.16.5",
-    "@testing-library/react": "^13.4.0",
-    "@testing-library/user-event": "^13.5.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-scripts": "5.0.1"
+  "debug": {
+    "env": {
+      "VITE_DEV_SERVER_URL": "http://127.0.0.1:7777/"
+    }
   },
-  "main": "public/electron.js",
-  "homepage": "./",
   "scripts": {
-    "build": "craco build",
-    "start": "electron ."
+    "dev": "vite",
+    "build": "tsc && vite build && electron-builder",
+    "preview": "vite preview",
+    "pree2e": "vite build --mode=test",
+    "e2e": "playwright test"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "dependencies": {
+    "@reduxjs/toolkit": "^1.9.5",
+    "electron-updater": "^5.3.0",
+    "immutability-helper": "^3.1.1",
+    "react-redux": "^8.0.5",
+    "redux": "^4.2.1",
+    "vite-tsconfig-paths": "^4.2.0"
   },
   "devDependencies": {
-    "concurrently": "^8.0.1",
-    "electron": "^24.3.1",
-    "electron-is-dev": "^2.0.0",
-    "wait-on": "^7.0.1",
-    "webpack-node-externals": "^3.0.0"
+    "@playwright/test": "^1.32.0",
+    "@types/react": "^18.0.28",
+    "@types/react-dom": "^18.0.11",
+    "@vitejs/plugin-react": "^3.1.0",
+    "electron": "^23.2.0",
+    "electron-builder": "^23.6.0",
+    "electron-devtools-installer": "^3.2.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "sass": "^1.60.0",
+    "typescript": "^5.0.2",
+    "vite": "^4.1.4",
+    "vite-plugin-electron": "^0.11.2",
+    "vite-plugin-electron-renderer": "^0.14.1"
+  },
+  "engines": {
+    "node": "^14.18.0 || >=16.0.0"
   }
 }
